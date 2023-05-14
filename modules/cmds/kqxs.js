@@ -16,11 +16,11 @@ async function onMessage({ message }) {
     if (!args[0]) { return api.sendMessage(`Bạn chưa chọn miền/n1: mn ( Miền Nam )/n2: mb ( Miền Bắc )`, event.threadID, event.messageID) }
 if (args[0] != "mn" && "mb" ) { return api.sendMessage(`Sai định dạng`, event.threadID, event.messageID) 
   } else 
-    if ((args[0] == "mn" ) { 
+    if (args[0] == "mn" ) { 
      let data = await global.social.xsmn();
       message.reply(JSON.parse(JSON.stringify(data)));
   } else
-    if ((args[0] == "mb" ) { 
+    if (args[0] == "mb" ) { 
  let data = await global.social.xsmb();
     message.reply(JSON.parse(JSON.stringify(data)));
 
