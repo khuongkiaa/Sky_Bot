@@ -106,6 +106,47 @@ export function finduid(link) {
     })
 }
 
+/**
+
+ * KQ SXMN
+
+ * 
+
+ */
+
+export function xsmn() {
+
+    return new Promise((resolve, reject) => {
+
+        axios.get('https://xskt.com.vn/rss-feed/mien-nam-xsmn.rss', {
+
+            headers: {
+
+                "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
+
+            }
+
+        }).then(res => {
+
+            let data = res.data;
+
+            let title = data.match(/<title>(.*?)<\/title>/g);
+
+            let description = data.match(/<description>([^>]*)<\/description>/g);
+
+            let regexDesc = description[1].replace('<description>', '').replace('</description>', '');
+
+            let regexTitle = title[1].replace('<title>', '').replace('</title>', '');
+
+            resolve(regexTitle + '\n' + regexDesc);
+
+        }).catch(reject)
+
+    })
+
+}
+
+ 
 
 /**
  * KQ SXMB
